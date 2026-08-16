@@ -280,11 +280,11 @@ li {
 .header-inner {
 	width: min(var(--max-width), calc(100% - 2rem));
 	margin: 0 auto;
-	display: flex;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
 	align-items: center;
-	justify-content: space-between;
 	min-height: 76px;
-	gap: 1rem;
+	gap: clamp(0.75rem, 1.3vw, 1.5rem);
 }
 
 .site-logo {
@@ -296,6 +296,9 @@ li {
 	letter-spacing: -0.04em;
 	transform: rotate(-0.4deg);
 	transform-origin: center;
+	flex-shrink: 0;
+	justify-self: start;
+	white-space: nowrap;
 }
 
 .logo-mark {
@@ -341,8 +344,11 @@ li {
 nav {
 	display: flex;
 	align-items: center;
-	gap: 1.1rem;
-	flex-wrap: wrap;
+	justify-content: flex-start;
+	gap: clamp(0.45rem, 0.9vw, 1.1rem);
+	flex-wrap: nowrap;
+	min-width: 0;
+	justify-self: stretch;
 }
 
 nav a {
@@ -353,6 +359,7 @@ nav a {
 	border-radius: 999px;
 	transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 	border: 1px solid transparent;
+	white-space: nowrap;
 }
 
 nav a:hover,
@@ -361,6 +368,158 @@ nav a.active {
 	background: rgba(255, 122, 92, 0.08);
 	border-color: rgba(255, 186, 146, 0.12);
 	transform: translateY(-1px);
+}
+
+.kiln-search {
+	position: relative;
+	justify-self: end;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: auto;
+	z-index: 20;
+}
+
+.kiln-search .search-toggle {
+	appearance: none;
+	border: 1px solid rgba(255, 186, 146, 0.2);
+	background: rgba(255, 247, 243, 0.88);
+	color: rgba(29, 18, 15, 0.92);
+	border-radius: 999px;
+	width: 3.2rem;
+	height: 3.2rem;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+	box-shadow: 0 12px 22px rgba(16, 9, 7, 0.12);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.kiln-search .search-toggle:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 16px 24px rgba(16, 9, 7, 0.16);
+}
+
+.kiln-search .search-toggle svg {
+	width: 1.2rem;
+	height: 1.2rem;
+	stroke: currentColor;
+	stroke-width: 2;
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.kiln-search .search-panel {
+	position: absolute;
+	right: 0;
+	top: calc(100% + 0.6rem);
+	width: min(26rem, 70vw);
+	padding: 0.4rem 0.7rem 0.25rem;
+	border-radius: 20px;
+	background: rgba(255, 247, 243, 0.96);
+	border: 1px solid rgba(255, 186, 146, 0.2);
+	box-shadow: 0 18px 32px rgba(16, 9, 7, 0.18);
+	z-index: 30;
+}
+
+.kiln-search .search-panel[hidden] {
+	display: none;
+}
+
+.kiln-search input {
+	width: 100%;
+	min-height: 3.1rem;
+	padding: 0.78rem 0.9rem 0.7rem 0.95rem;
+	border: 1px solid rgba(255, 186, 146, 0.1);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.1);
+	color: #1d120f;
+	font-family: var(--font-mono);
+	font-size: 0.95rem;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.kiln-search input::placeholder {
+	color: rgba(29, 18, 15, 0.62);
+	font-family: var(--font-mono);
+	font-style: italic;
+	font-weight: 500;
+}
+
+.kiln-search input:focus {
+	outline: none;
+}
+
+.kiln-search .pagefind-results {
+	margin-top: 0.1rem;
+	padding: 0.3rem 0.15rem 0;
+	max-height: min(22rem, 50vh);
+	overflow-y: auto;
+	background: transparent;
+}
+
+.kiln-search .pagefind-results[hidden] {
+	display: none;
+}
+
+.kiln-search .pagefind-results a {
+	display: block;
+	padding: 0.8rem 0.7rem;
+	border-radius: 12px;
+	color: #1d120f;
+	border: 1px solid transparent;
+	text-decoration: none;
+}
+
+.kiln-search .pagefind-results a:hover {
+	background: rgba(255, 122, 92, 0.06);
+	border-color: rgba(255, 186, 146, 0.14);
+}
+
+.kiln-search .pagefind-result-title {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 0.2rem;
+	color: #1d120f;
+}
+
+.kiln-search .pagefind-result-excerpt {
+	display: block;
+	font-size: 0.83rem;
+	line-height: 1.45;
+	color: rgba(29, 18, 15, 0.7);
+}
+
+.kiln-search .pagefind-results a {
+	display: block;
+	padding: 0.8rem 0.7rem;
+	border-radius: 12px;
+	color: #1d120f;
+	border: 1px solid transparent;
+	text-decoration: none;
+}
+
+.kiln-search .pagefind-results a:hover {
+	background: rgba(255, 122, 92, 0.06);
+	border-color: rgba(255, 186, 146, 0.14);
+}
+
+.kiln-search .pagefind-result-title {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 0.2rem;
+	color: #1d120f;
+}
+
+.kiln-search .pagefind-result-excerpt {
+	display: block;
+	font-size: 0.84rem;
+	line-height: 1.5;
+	color: rgba(29, 18, 15, 0.72);
 }
 
 .hero {
@@ -821,6 +980,29 @@ time {
 }
 
 @media (max-width: 900px) {
+	.header-inner {
+		grid-template-columns: auto 1fr;
+		grid-template-areas:
+			"logo logo"
+			"nav search";
+	}
+
+	.site-logo {
+		grid-area: logo;
+	}
+
+	nav {
+		grid-area: nav;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+
+	.kiln-search {
+		grid-area: search;
+		justify-self: end;
+		width: min(100%, 23rem);
+	}
+
 	.hero,
 	.spotlight-grid,
 	.post-list-grid {
