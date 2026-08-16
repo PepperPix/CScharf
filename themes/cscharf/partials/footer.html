@@ -12,3 +12,12 @@
         </div>
     </div>
 </footer>
+<script src="{{ asset_url 'js/prism-core.min.js' }}"></script>
+<script src="{{ asset_url 'js/prism-autoloader.min.js' }}" data-autoloader-path="{{ asset_url 'js/components/' }}"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    if (window.Prism && typeof window.Prism.highlightAll === 'function') {
+      window.Prism.highlightAll();
+    }
+  });
+</script>
