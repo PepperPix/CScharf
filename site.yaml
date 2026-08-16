@@ -33,6 +33,10 @@ taxonomies:
     permalink: /categories/:slug/
     paginate: 10
 
+search:
+  enabled: true
+  extended: false
+
 menus:
   main:
     - title: Home

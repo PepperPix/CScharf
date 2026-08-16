@@ -13,9 +13,11 @@
         {{ if menus && menus.main }}
         <nav aria-label="Main navigation">
             {{ for item in menus.main }}
-            <a href="{{ item.url }}"{{ if item.active }} class="active"{{ end }}>{{ item.title }}</a>
+            <a href="{{ item.url }}" {{ if item.active }} class="active" {{ end }}>{{ item.title }}</a>
             {{ end }}
         </nav>
         {{ end }}
+
+        {{ include 'search' }}
     </div>
 </header>
