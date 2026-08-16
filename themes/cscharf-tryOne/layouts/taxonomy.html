@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ taxonomy.term }} &mdash; {{ site.title }}</title>
+    {{ include 'head' }}
+    {{ slot 'head' }}
+</head>
+<body>
+    {{ slot 'body_start' }}
+    {{ include 'header' }}
+    <main class="page-shell taxonomy-shell">
+        {{ slot 'before_content' }}
+
+        <section class="content-panel taxonomy-intro">
+            <p class="eyebrow">{{ if taxonomy.name == "categories" }}Kategorie{{ else if taxonomy.name == "tags" }}Tag{{ else }}{{ taxonomy.name }}{{ end }}</p>
+            <h1>{{ taxonomy.term }}</h1>
+            <p>
+                {{ if taxonomy.name == "categories" }}Beiträge in der Kategorie{{ else }}Beiträge mit dem Tag{{ end }}
+                <strong>{{ taxonomy.term }}</strong>.
+            </p>
+        </section>
+
+        <section class="taxonomy-posts">
+            {{ for item in taxonomy.items }}
+            <article class="post-card">
+                <div class="post-card-meta">
+                    {{ if item.date }}<time datetime="{{ item.date | date.to_string '%Y-%m-%d' }}">{{ item.date | date.to_string '%d. %B %Y' }}</time>{{ end }}
+                </div>
+                <h2><a href="{{ item.url }}">{{ item.title }}</a></h2>
+                {{ if item.description }}<p>{{ item.description }}</p>{{ end }}
+                {{ if item.tags && item.tags.size > 0 }}
+                <div class="article-tags compact">
+                    {{ for tag in item.tags }}<a href="/tags/{{ tag }}/">{{ tag }}</a>{{ end }}
+                </div>
+                {{ end }}
+            </article>
+            {{ end }}
+        </section>
+
+        {{ slot 'after_content' }}
+    </main>
+    {{ include 'footer' }}
+    {{ slot 'body_end' }}
+</body>
+</html>

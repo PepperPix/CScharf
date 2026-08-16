@@ -1,0 +1,49 @@
+﻿title: cscharf.de
+description: Persönlicher Blog und Architektur-Notizen von cscharf.de mit Fokus auf .NET, Dataverse und Verantwortung im Alltag.
+baseUrl: https://cscharf.de
+language: de
+theme: cscharf-tryOne
+
+home:
+  page: content/index.md
+
+collections:
+  posts:
+    directory: content/posts
+    permalink: /blog/:slug/
+    sort: date desc
+    feed: true
+    paginate: 10
+    taxonomies:
+      - tags
+      - categories
+    layout: post
+
+  pages:
+    directory: content/pages
+    permalink: /:slug/
+    sort: weight asc
+    layout: page
+
+taxonomies:
+  tags:
+    permalink: /tags/:slug/
+    paginate: 20
+  categories:
+    permalink: /categories/:slug/
+    paginate: 10
+
+menus:
+  main:
+    - title: Home
+      url: /
+    - title: Blog
+      ref: posts/
+    - title: Über mich
+      ref: pages/about
+    - title: Lebenslauf
+      ref: pages/cv
+    - title: Datenschutz
+      ref: pages/datenschutz
+    - title: Impressum
+      ref: pages/impressum

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ taxonomy.name }} &mdash; {{ site.title }}</title>
+    {{ include 'head' }}
+    {{ slot 'head' }}
+</head>
+<body>
+    {{ slot 'body_start' }}
+    {{ include 'header' }}
+    <main class="page-shell taxonomy-shell">
+        {{ slot 'before_content' }}
+
+        <section class="content-panel taxonomy-intro">
+            <p class="eyebrow">{{ if taxonomy.name == "categories" }}Kategorien{{ else if taxonomy.name == "tags" }}Tags{{ else }}{{ taxonomy.name }}{{ end }}</p>
+            <h1>{{ if taxonomy.name == "categories" }}Alle Kategorien{{ else if taxonomy.name == "tags" }}Tag-Cloud{{ else }}{{ taxonomy.name }}{{ end }}</h1>
+            <p>
+                {{ if taxonomy.name == "categories" }}Durchstöbere die Themen und finde passende Beiträge.{{ else }}Entdecke die wichtigsten Themen und Schlagwörter aus dem Blog.{{ end }}
+            </p>
+        </section>
+
+        <section class="content-panel">
+            <div class="tag-cloud">
+                {{ for term in taxonomy.terms }}
+                <a href="{{ term.url }}" class="tag-pill">{{ term.name }}</a>
+                {{ end }}
+            </div>
+        </section>
+
+        {{ slot 'after_content' }}
+    </main>
+    {{ include 'footer' }}
+    {{ slot 'body_end' }}
+</body>
+</html>

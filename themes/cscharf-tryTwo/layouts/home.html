@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} &mdash; {{ site.title }}</title>
+    {{ include 'head' }}
+    {{ slot 'head' }}
+</head>
+<body>
+    {{ slot 'body_start' }}
+    {{ include 'header' }}
+    <main class="page-shell home-shell">
+        {{ slot 'before_content' }}
+
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Enterprise Architect · .NET · Dataverse</p>
+                <h1>Architektur mit System, Verantwortung mit Perspektive.</h1>
+                <p class="lead">Ich schreibe über moderne .NET- und Dataverse-Architekturen, nachhaltige Plattformentscheidungen und die menschliche Seite von Verantwortung im Alltag.</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="/blog/">Zum Blog</a>
+                    <a class="button secondary" href="/about/">Über mich</a>
+                </div>
+            </div>
+            <aside class="hero-panel">
+                <div class="panel-label">Schwerpunkte</div>
+                <ul>
+                    <li>Dataverse Architecture</li>
+                    <li>Enterprise .NET</li>
+                    <li>System Design</li>
+                    <li>Pflegeelternschaft</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="spotlight-grid">
+            <article class="spotlight-item">
+                <p class="eyebrow">Fokus</p>
+                <h2>Dataverse &amp; Plattformdesign</h2>
+                <p>Klare Architekturentscheidungen, Governance und belastbare Lösungen auf Basis von Dataverse und Microsoft-Stack.</p>
+            </article>
+            <article class="spotlight-item">
+                <p class="eyebrow">Praxis</p>
+                <h2>.NET &amp; Integration</h2>
+                <p>Systemgrenzen, APIs, Integrationen und nachhaltige technische Entscheidungen für reale Unternehmensumgebungen.</p>
+            </article>
+            <article class="spotlight-item">
+                <p class="eyebrow">Perspektive</p>
+                <h2>Verantwortung im Alltag</h2>
+                <p>Ein persönlicher Blick auf Pflegeelternschaft, Balance und die Haltung, die hinter guten Entscheidungen steht.</p>
+            </article>
+        </section>
+
+        <section class="content-panel">
+            <div class="section-heading">
+                <p class="eyebrow">Aktuelle Gedanken</p>
+                <h2>Neueste Beiträge</h2>
+            </div>
+            {{ include 'recent-posts' }}
+        </section>
+
+        {{ slot 'after_content' }}
+    </main>
+    {{ include 'footer' }}
+    {{ slot 'body_end' }}
+</body>
+</html>

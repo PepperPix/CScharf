@@ -1,0 +1,11 @@
+<ul class="post-list">
+    {{ for item in collections.posts.items | limit 5 }}
+    <li>
+        <div class="post-list-meta">
+            <time datetime="{{ item.date | date.to_string '%Y-%m-%d' }}">{{ item.date | date.to_string '%d. %B %Y' }}</time>
+        </div>
+        <a href="{{ item.url }}">{{ item.title }}</a>
+        {{ if item.description }}<p>{{ item.description }}</p>{{ end }}
+    </li>
+    {{ end }}
+</ul>
