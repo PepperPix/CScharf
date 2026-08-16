@@ -2,7 +2,7 @@
 description: Persönlicher Blog und Architektur-Notizen von cscharf.de mit Fokus auf .NET, Dataverse und Verantwortung im Alltag.
 baseUrl: https://cscharf.de
 language: de
-theme: cscharf-tryOne
+theme: cscharf
 
 home:
   page: content/index.md
