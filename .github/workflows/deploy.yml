@@ -27,7 +27,7 @@ jobs:
         run: dotnet tool restore
 
       - name: Build site
-        run: dotnet tool run kiln build --base-url ${{ vars.SITE_URL || 'https://PepperPix.github.io/cscharf' }}
+        run: dotnet tool run kiln build --base-url ${{ vars.SITE_URL || 'https://PepperPix.github.io/CScharf' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
